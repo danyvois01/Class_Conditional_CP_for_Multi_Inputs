@@ -6,10 +6,12 @@ import numpy as np
 from mpl_toolkits.axes_grid1.inset_locator import zoomed_inset_axes, mark_inset
 
 # %% Generation envelope
+# Parameters
 alpha = 0.1
 m = 10
 n = 100
 Nenv = 100000
+
 sample_cal = u.gen_pvalues_vectorized(m, n, N_try=Nenv)
 scores = u.Score_Quantile(sample_cal.T, n)
 quant = np.sort(scores)[int(alpha * (Nenv + 1))]
@@ -17,8 +19,6 @@ envelope = u.gen_envelope_quant(n, m, quant)
 
 
 # %% Plot
-
-# Parameters
 sample = u.gen_pvalues_vectorized(m, n, N_try=1000)
 
 # Calculations
@@ -42,7 +42,6 @@ ax.plot(np.arange(1, m + 1), sample[:150].T, color="k", alpha=0.15)
 ax.set_xlabel(r"$j$", fontsize=12)
 ax.set_ylabel(r"$P_j$", fontsize=12)
 ax.set_xticks(np.arange(1, m + 1))
-# ax.grid(True, which="both", linestyle="--", linewidth=0.5, alpha=0.7, axis="x")
 ax.grid(True, which="both", linestyle="--", linewidth=0.5, alpha=0.7)
 
 ax.set_xlim(0.5, m + 0.5)
