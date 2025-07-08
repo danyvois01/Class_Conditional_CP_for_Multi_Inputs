@@ -43,6 +43,7 @@ The `Pre-processing PlantClef` directory contains all necessary functions to com
 -   **Score Computation**:
 
     -   `softmax_computation.py`: Computes the softmax scores for both the test and calibration datasets.
+    -   'model.pth' contained a pretrained model which can directly be used for the computation of the scores instead of the previous steps.
 
 ### Conformal Prediction
 
