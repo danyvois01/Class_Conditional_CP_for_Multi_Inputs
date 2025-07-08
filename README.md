@@ -43,7 +43,7 @@ The `Pre-processing PlantClef` directory contains all necessary functions to com
 -   **Score Computation**:
 
     -   `scores_computation.py`: Computes the scores (output of the classifier for each class) for both the test and calibration datasets.
-    -   'model.pth' contained a pretrained model which can directly be used for the computation of the scores.
+    -   `model.pth` contained a pretrained model which can directly be used for the computation of the scores.
 
 ### Conformal Prediction
 
