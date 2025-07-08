@@ -13,7 +13,7 @@ To accelerate computation, quantiles for certain distributions are precomputed:
 
 ## Plot envelope
 
--  `viz_envelope.py: generates Figure 1.
+-   `viz_envelope.py`: generates Figure 1.
 
 ## Synthetic Data Experiments
 
