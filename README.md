@@ -1,6 +1,6 @@
 # Class conditional conformal prediction for multiple inputs by p-value aggregation
 
-This repository contains the code necessary to reproduce the experimental results presented in the paper 'Class conditional conformal prediction for multiple inputs by p-value aggregation' of Jean-Baptiste Fermanian, Mohamed Hebiri and Joseph Salmon ([arXiv][url]).
+This repository contains the code necessary to reproduce the experimental results presented in the paper 'Class conditional conformal prediction for multiple inputs by p-value aggregation' of Jean-Baptiste Fermanian, Mohamed Hebiri and Joseph Salmon ([arXiv](url)).
 
 ## General
 
@@ -13,7 +13,7 @@ To accelerate computation, quantiles for certain distributions are precomputed:
 
 ## Plot envelope
 
--  'viz_envelope.py': generates Figure 1.
+-  `viz_envelope.py: generates Figure 1.
 
 ## Synthetic Data Experiments
 
