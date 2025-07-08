@@ -1,6 +1,6 @@
 # Class conditional conformal prediction for multiple inputs by p-value aggregation
 
-This repository contains the code necessary to reproduce the experimental results presented in the paper 'Class conditional conformal prediction for multiple inputs by p-value aggregation' of Jean-Baptiste Fermanian, Mohamed Hebiri and Joseph Salmon ([arXiv](url)).
+This repository contains the code necessary to reproduce the experimental results presented in the paper *Class conditional conformal prediction for multiple inputs by p-value aggregation* of Jean-Baptiste Fermanian, Mohamed Hebiri and Joseph Salmon ([arXiv](url)).
 
 ## General
 
