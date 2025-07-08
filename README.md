@@ -30,7 +30,7 @@ The `Pre-processing PlantClef` directory contains all necessary functions to com
     -   `PlantCLEF2015TrainingData`
     -   `PlantCLEF2015TestDataWithAnnotations`
 
--   **Model**: We fine-tune the pre-trained model `resnet50_weights_best_acc.tar` provided by Garcin et al. (2021) ([GitHub Repository](https://github.com/plantnet/PlantNet-300K/)) which must also be downloaded. The file `utils_PlantNet300K.py` comes from this source.
+-   **Model**: We fine-tune the pre-trained model `resnet50_weights_best_acc.tar` provided by Garcin et al. (2021) ([PlantNet-300K repository](https://github.com/plantnet/PlantNet-300K/)) which must also be downloaded. The file `utils_PlantNet300K.py` comes from this source.
 
 -   **Data Split**:
 
@@ -42,8 +42,8 @@ The `Pre-processing PlantClef` directory contains all necessary functions to com
 
 -   **Score Computation**:
 
-    -   `softmax_computation.py`: Computes the softmax scores for both the test and calibration datasets.
-    -   'model.pth' contained a pretrained model which can directly be used for the computation of the scores instead of the previous steps.
+    -   `scores_computation.py`: Computes the scores (output of the classifier for each class) for both the test and calibration datasets.
+    -   'model.pth' contained a pretrained model which can directly be used for the computation of the scores.
 
 ### Conformal Prediction
 

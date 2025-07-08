@@ -90,7 +90,6 @@ for input, id in dataloadertest:
         X[total_test : total_test + batchsize, 1:] = pred
         total_test += batchsize
 X = X.numpy()
-X[:, 1:] = sc.special.softmax(X[:, 1:], axis=-1)
 np.save("DataTest", X)
 
 datasetcal = DoubleDatasetTestCal(
@@ -109,5 +108,4 @@ for input, id in dataloadercal:
         X[total_test : total_test + batchsize, 1:] = pred
         total_test += batchsize
 X = X.numpy()
-X[:, 1:] = sc.special.softmax(X[:, 1:], axis=-1)
 np.save("DataCal", X)
