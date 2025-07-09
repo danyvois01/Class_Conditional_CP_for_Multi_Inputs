@@ -71,8 +71,10 @@ model.eval()
 
 
 # %% Load data
-image_folder1 = "/PlantCLEF2015TestDataWithAnnotations/"
-image_folder2 = "/PlantCLEF2015TrainingData/"
+dataset_path = input(f"Please provide the path to the dataset directory: ").strip()
+
+image_folder1 = os.path.join(dataset_path, "PlantCLEF2015TestDataWithAnnotations")
+image_folder2 = os.path.join(dataset_path, "PlantCLEF2015TrainingData", "train")
 
 datasettest = DoubleDatasetTestCal(
     image_folder1, image_folder2, test_ind, y, transform=transform_train

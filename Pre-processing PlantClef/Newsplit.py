@@ -112,3 +112,5 @@ for label in range(1000):
 np.save("train_ind", train_ind)
 np.save("test_ind", test_ind)
 np.save("cal_ind", cal_ind)
+
+# %%
