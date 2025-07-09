@@ -23,7 +23,7 @@ To accelerate computation, quantiles for certain distributions are precomputed:
 
 ### Preprocessing
 
-The `Pre-processing PlantClef` directory contains all necessary functions to compute softmax scores before applying conformal prediction methods.
+The `Pre-processing PlantClef` directory contains all necessary functions to compute predicted scores for each image before applying conformal prediction methods.
 
 -   **Dataset**: We use data from LifeClef 2015 ([LifeClef 2015 Plant Task](https://www.imageclef.org/lifeclef/2015/plant)), consisting of two datasets that need to be downloaded:
 
