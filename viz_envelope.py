@@ -81,3 +81,5 @@ mark_inset(ax, axins, loc1=3, loc2=4, fc="none", ec="black", lw=3, zorder=15)
 # Use tight_layout to adjust the plot
 plt.tight_layout()
 plt.show()
+
+# %%

@@ -4,6 +4,8 @@ This repository contains the code necessary to reproduce the experimental result
 
 ## General
 
+-   `requirements.txt`: Contains the required packages.
+ 
 -   `utils.py`: Contains all functions used for constructing prediction sets and generating synthetic data.
 
 To accelerate computation, quantiles for certain distributions are precomputed:

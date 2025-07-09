@@ -27,7 +27,7 @@ method = Data1[()]["methods"]
 temp = 20
 alpha = 0.1
 minclasssize = 20
-nameload = (couverture
+nameload = (
     "Plantnet_shuffle_temp"
     + str(temp)
     + "alpha"
@@ -95,7 +95,7 @@ axs[0].set_xlabel("Number of observations")
 axs[0].grid(alpha=0.5)
 
 
-# === Length tp20 
+# === Length tp20
 for i, met in enumerate(method):
     axs[1].plot(
         np.arange(1, maxsizeobs + 1),
@@ -144,8 +144,8 @@ legend = fig.legend(
     fontsize=12,
 )
 
-plt.subplots_adjust(wspace=0.1)  
-plt.tight_layout(rect=[0, 0.05, 1, 1]) 
+plt.subplots_adjust(wspace=0.1)
+plt.tight_layout(rect=[0, 0.05, 1, 1])
 plt.show()
 
 # %% Plot coverage
@@ -258,7 +258,7 @@ marker_size = 7
 
 fig, axs = plt.subplots(1, 2, figsize=(12, 4))
 
-# === Coverage tp1 
+# === Coverage tp1
 for i, met in enumerate(method):
     axs[0].plot(
         np.arange(1, maxsizeobs + 1),
@@ -274,7 +274,7 @@ axs[0].set_xlabel("Number of observations")
 axs[0].grid(alpha=0.5)
 
 
-# === Length tp20 
+# === Length tp20
 for i, met in enumerate(method):
     axs[1].plot(
         np.arange(1, maxsizeobs + 1),
@@ -313,3 +313,4 @@ fig.legend(
 plt.subplots_adjust(hspace=0.3, wspace=0.1)
 plt.tight_layout(rect=[0, 0.07, 1, 1])
 plt.show()
+# %%

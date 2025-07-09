@@ -525,3 +525,5 @@ legend = fig.legend(
 plt.tight_layout(rect=[0, 0.08, 1, 1])
 plt.subplots_adjust(bottom=0.2)
 plt.show()
+
+# %%
