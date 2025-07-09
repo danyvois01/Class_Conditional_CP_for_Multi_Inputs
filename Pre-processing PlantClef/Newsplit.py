@@ -10,11 +10,23 @@ ntrain = 113204  # number of images
 y = []
 obsID = []
 
-# path may need to be adapted
+# path may need to be adapted and put a default value of /home/jsalmon/Data/PlantCLEF2015/
+
+default_dataset_path = "/home/jsalmon/Data/PlantCLEF2015/"
+user_input = input(
+    f"Please provide the path to the dataset directory [default: {default_dataset_path}]: "
+).strip()
+dataset_path = user_input if user_input else default_dataset_path
+
 
 for n in range(ntrain):
-    path_name_train = "PlantCLEF2015TrainingData/train/" + str(n) + ".xml"
-    path_name_test = "PlantCLEF2015TestDataWithAnnotations/" + str(n) + ".xml"
+    path_name_train = os.path.join(
+        dataset_path, "PlantCLEF2015TrainingData", "train", str(n) + ".xml"
+    )
+    # "PlantCLEF2015TrainingData/train/" + str(n) + ".xml"
+    path_name_test = os.path.join(
+        dataset_path, "PlantCLEF2015TestDataWithAnnotations", str(n) + ".xml"
+    )
     if os.path.exists(path_name_train):
         tree = etree.parse(path_name_train)
     elif os.path.exists(path_name_test):
@@ -61,9 +73,10 @@ obs_size = np.zeros(nobs)
 y_obs = np.zeros(nobs)
 for obs in range(nobs):
     obs_size[obs] = len(Obs_to_Images[obs])
-    y_obs[obs] = y[Obs_to_Images[obs][0]]
+    y_obs[obs] = newy[Obs_to_Images[obs][0]]
 
 for label in range(1000):
+    # range(len(np.unique(y_obs))):
     obss = np.where(y_obs == label)[0]
     size_obss = obs_size[obss]
     nytr = 0
@@ -91,7 +104,7 @@ for label in range(1000):
         obsind = np.argmin(size_obss)
         if size_obss[obsind] == 1:
             obsind = 1 - obsind
-        test_ind += Obs_to_Images[obss[1 - obsind]]
+        test_ind += Obs_to_Images[obss[obsind]]
         minsize = int(size_obss[obsind])
         cal_ind += Obs_to_Images[obss[obsind]][: minsize // 2]
         train_ind += Obs_to_Images[obss[obsind]][minsize // 2 :]

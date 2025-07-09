@@ -1,6 +1,6 @@
 # Class conditional conformal prediction for multiple inputs by p-value aggregation
 
-This repository contains the code necessary to reproduce the experimental results presented in the paper *Class conditional conformal prediction for multiple inputs by p-value aggregation* of Jean-Baptiste Fermanian, Mohamed Hebiri and Joseph Salmon ([arXiv](url)).
+This repository contains the code necessary to reproduce the experimental results presented in the paper *Class conditional conformal prediction for multiple inputs by p-value aggregation* of [Jean-Baptiste Fermanian](https://jeanbaptistefermanian.github.io/), [Mohamed Hebiri](https://perso.math.u-pem.fr/hebiri.mohamed/) and [Joseph Salmon](https://josephsalmon.eu) ([arXiv](url)).
 
 ## General
 
@@ -30,11 +30,13 @@ The `Pre-processing PlantClef` directory contains all necessary functions to com
     -   `PlantCLEF2015TrainingData`
     -   `PlantCLEF2015TestDataWithAnnotations`
 
--   **Model**: We fine-tune the pre-trained model `resnet50_weights_best_acc.tar` provided by Garcin et al. (2021) ([PlantNet-300K repository](https://github.com/plantnet/PlantNet-300K/)) which must also be downloaded. The file `utils_PlantNet300K.py` comes from this source.
+You can automatically download these datasets using the script `download_plantclef.py`. This script downloads the datasets from the Pl@ntNet server and extracts them into a specified directory.
 
 -   **Data Split**:
 
     -   `Newsplit.py`: Splits the merged dataset into three equally sized parts, preserving observation structure (i.e., images from the same observation remain in the same split). Only the indices of the new sets are returned.
+
+-   **Model**: We fine-tune the pre-trained model `resnet50_weights_best_acc.tar` provided by Garcin et al. (2021) ([PlantNet-300K repository](https://github.com/plantnet/PlantNet-300K/)) which must also be downloaded. The file `utils_PlantNet300K.py` comes from this source.
 
 -   **Training**:
 
