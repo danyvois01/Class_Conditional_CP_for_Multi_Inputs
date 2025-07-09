@@ -12,7 +12,7 @@ obsID = []
 
 # path may need to be adapted and put a default value of /home/jsalmon/Data/PlantCLEF2015/
 
-default_dataset_path = "/home/jsalmon/Data/PlantCLEF2015/"
+default_dataset_path = "/home/jean-baptiste/Documents/Github/PlantNet-300K"
 user_input = input(
     f"Please provide the path to the dataset directory [default: {default_dataset_path}]: "
 ).strip()
@@ -104,7 +104,7 @@ for label in range(1000):
         obsind = np.argmin(size_obss)
         if size_obss[obsind] == 1:
             obsind = 1 - obsind
-        test_ind += Obs_to_Images[obss[obsind]]
+        test_ind += Obs_to_Images[obss[1 - obsind]]
         minsize = int(size_obss[obsind])
         cal_ind += Obs_to_Images[obss[obsind]][: minsize // 2]
         train_ind += Obs_to_Images[obss[obsind]][minsize // 2 :]
