@@ -204,9 +204,9 @@ plt.rcParams.update(
     }
 )
 # %%
-coverage_std = np.sqrt(coverage * (1 - coverage) / 5000)
-length_std = np.std(lengths, axis=-1)
-coverage_cd_std = np.sqrt(np.max((1 - coverage_cd) * coverage_cd / p, axis=-1) / 5000)
+coverage_std = np.sqrt(coverage * (1 - coverage) / Nrepet)
+length_std = np.std(lengths, axis=-1) / np.sqrt(Nrepet)
+coverage_cd_std = np.sqrt(np.max((1 - coverage_cd) * coverage_cd / p, axis=-1) / Nrepet)
 
 fig, axes = plt.subplots(1, 3, figsize=(15, 4), sharex=False, sharey=False)
 selected_method = method
