@@ -97,14 +97,14 @@ datasetcal = DoubleDatasetTestCal(
 dataloadercal = DataLoader(datasetcal, batch_size=32, shuffle=False, num_workers=4)
 
 X = torch.zeros((len(datasetcal), 1001))
-total_test = 0
+total_cal = 0
 
 for input, id in dataloadercal:
     with torch.no_grad():
         pred = model(input)
         batchsize = id.size(0)
-        X[total_test : total_test + batchsize, 0] = id
-        X[total_test : total_test + batchsize, 1:] = pred
+        X[total_cal : total_cal + batchsize, 0] = id
+        X[total_cal : total_cal + batchsize, 1:] = pred
         total_test += batchsize
 X = X.numpy()
 np.save("DataCal", X)
