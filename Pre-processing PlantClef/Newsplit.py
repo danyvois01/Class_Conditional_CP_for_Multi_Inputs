@@ -27,14 +27,17 @@ for n in range(ntrain):
     path_name_test = os.path.join(
         dataset_path, "PlantCLEF2015TestDataWithAnnotations", str(n) + ".xml"
     )
+    image_exists = False
     if os.path.exists(path_name_train):
         tree = etree.parse(path_name_train)
+        image_exists = True
     elif os.path.exists(path_name_test):
         tree = etree.parse(path_name_test)
-
-    root = tree.getroot()
-    y += [int(root.findall("ClassId")[0].text)]
-    obsID += [int(root.findall("ObservationId")[0].text)]
+        image_exist = True
+    if image_exists:
+        root = tree.getroot()
+        y += [int(root.findall("ClassId")[0].text)]
+        obsID += [int(root.findall("ObservationId")[0].text)]
 
 y = np.array(y)
 obsID = np.array(obsID)

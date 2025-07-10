@@ -14,9 +14,6 @@ y = np.load("newlabels.npy")
 test_ind = np.load("test_ind.npy")
 cal_ind = np.load("cal_ind.npy")
 
-# Image 1283 is missing in the dataset
-cal_ind = np.delete(cal_ind, np.where(cal_ind == 1283)[0])
-
 
 #  Definition of the Dataset class using to merge the two datasets
 class DoubleDatasetTestCal(Dataset):

@@ -35,10 +35,6 @@ maxsizeobs = 10
 K = 1000
 
 
-# %% Delete image 1283 which is missing
-cal_ind = np.delete(cal_ind, np.where(cal_ind == 1283)[0])
-obs1283 = obs_Id[1283]
-Obs_to_Images[obs1283].remove(1283)
 # %% Clean Obs_to_Images with for images belonging to train_set
 for obsind, obs in enumerate(Obs_to_Images):
     aux = obs.copy()
