@@ -4,9 +4,9 @@ import numpy as np
 import os
 import pickle
 
-ntrain = 113204  # number of images
 
 # %% load labels
+nmaximages = 113204  # number of images
 y = []
 obsID = []
 
@@ -19,7 +19,7 @@ user_input = input(
 dataset_path = user_input if user_input else default_dataset_path
 
 
-for n in range(ntrain):
+for n in range(nmaximages):
     path_name_train = os.path.join(
         dataset_path, "PlantCLEF2015TrainingData", "train", str(n) + ".xml"
     )
@@ -33,11 +33,14 @@ for n in range(ntrain):
         image_exists = True
     elif os.path.exists(path_name_test):
         tree = etree.parse(path_name_test)
-        image_exist = True
+        image_exists = True
     if image_exists:
         root = tree.getroot()
         y += [int(root.findall("ClassId")[0].text)]
         obsID += [int(root.findall("ObservationId")[0].text)]
+    else:
+        y += [np.nan]
+        obsID += [np.nan]
 
 y = np.array(y)
 obsID = np.array(obsID)
@@ -67,9 +70,6 @@ with open("Obs_to_Images", "wb") as fp:  # Pickling
 train_ind = []
 test_ind = []
 cal_ind = []
-ntrain = 0
-ntest = 0
-ncal = 0
 
 nobs = np.unique(newObsID).shape[0]
 obs_size = np.zeros(nobs)
