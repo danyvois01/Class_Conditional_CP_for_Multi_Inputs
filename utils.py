@@ -628,25 +628,32 @@ def conformal_combination(
     return cp_set
 
 
-def combination_pvalscore(pvaltest, pcal, ycal, alpha, scorename, class_size=None):
+def combination_pvalscore(pvaltest, ycal, alpha, scorename, class_size=None, N_try=100):
     # pvaltest : Float array (m,K)
-    # pcal : Float array shape (m,K*N)
-    # ycal : Int array shape K*N
+    # ycal : Int array shape K*N (can be ignored if we recreate ycal_cur)
     # alpha : Float in (0,1)
     m, K = pvaltest.shape
     CPcomb = np.zeros((m, K))
+    
     if scorename == "ScEnv":
         for mm in range(m):
-            Scal = Score_Env_cal(np.sort(pcal[: mm + 1], axis=0), ycal, class_size)
+            m_cur = mm + 1
+            pcal_cur, _ = p_value_cal_score_fast(class_size, m_cur, N_try)
+            Scal = Score_Env_cal(np.sort(pcal_cur, axis=0), ycal, class_size)
             Snew = Score_Env_test(
-                np.sort(pvaltest[: mm + 1], axis=0).reshape((mm + 1, 1, K)), class_size
+                np.sort(pvaltest[:m_cur], axis=0).reshape((m_cur, 1, K)), class_size
             )
             CPcomb[mm, :] = conformal_set(Scal, ycal, Snew, alpha, cond=True)
         return CPcomb
+        
     for mm in range(m):
-        Scal = Score_pvalue(pcal[: mm + 1], scorename)
-        Snew = Score_pvalue(pvaltest[: mm + 1], scorename)
-        CPcomb[mm, :] = conformal_set(Scal, ycal, Snew, alpha, cond=True)
+        m_cur = mm + 1
+        pcal_cur, ycal_cur = p_value_cal_score_fast(class_size, m_cur, N_try)
+        
+        Scal = Score_pvalue(pcal_cur, scorename)
+        Snew = Score_pvalue(pvaltest[:m_cur], scorename)
+        CPcomb[mm, :] = conformal_set(Scal, ycal_cur, Snew, alpha, cond=True)
+        
     return CPcomb
 
 
@@ -750,7 +757,7 @@ def gen_pvalues(m, n, N_try=1000):
 def prediction_np(X, model):
     Xaux = torch.FloatTensor(X)
     with torch.no_grad():
-        y = model.forward(Xaux)
+        y = torch.softmax(model.forward(Xaux), dim=-1)
     y = y.numpy()
     return y
 
