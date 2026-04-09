@@ -154,6 +154,7 @@ for j in tqdm(range(Nrepet)):
     pvalcdrand = u.p_value(S_cal, ycal, S_new, cond=True, randomize=True)
     CPcd = u.conformal_set(S_cal, ycal, S_new, alpha, cond=True)
     CPMAJ = u.conformal_set(S_cal, ycal, S_new, alpha / 2, cond=True)
+    pval_score_cal, ypval_score_cal = u.p_value_cal_score_fast(class_size, m, Ncalscore)
     for imet, met in enumerate(method):
         if met[:3] == "MAJ":
             CPaux = CPMAJ
@@ -161,7 +162,7 @@ for j in tqdm(range(Nrepet)):
             CPaux = CPcd
         if met in methodscore:
             cp_set = u.combination_pvalscore(
-                pvalcdrand, None, alpha, met, class_size=class_size, N_try=Ncalscore
+                pvalcdrand, pval_score_cal, ypval_score_cal, alpha, met, class_size=class_size
             )
         else:
             cp_set = u.combination_majority_vote(
